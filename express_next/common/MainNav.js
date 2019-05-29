@@ -1,26 +1,19 @@
 import Link from 'next/link';
 
-const LinkItem = (props) => (
-  <Link
-    as={props.as}
-    href={props.url}
-  ><a>{props.name}</a>
-  </Link>
-);
+import BaseLink from './BaseLink.js';
 
 let MainNav;
 
 export default MainNav = () => (
   <ul>
     <li>
-      <LinkItem
-        as={'/h'}
+      <BaseLink
         url={'/Home'}
         name={'home'}
       />
     </li>
     <li>
-      <LinkItem
+      <BaseLink
         as={'/abm'}
         url={'/AboutMe'}
         name={'aboutMe'}

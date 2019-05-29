@@ -7,7 +7,7 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   const server = express()
 
-  server.get(/\/|\/h/, (req, res) => {
+  server.get('/', (req, res) => {
     const actualPage = '/Home'
     const queryParams = {
       title: req.params.id
