@@ -1,0 +1,63 @@
+[user]
+	name = jacky
+	email = jacky_zh163@163.com
+[alias]
+	co = checkout
+	ci = commit
+	st = status -s
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    pr = pull --rebase
+[color]
+	diff = auto
+    	status = auto
+    	branch = auto
+    	interactive = auto
+    	ui = true
+    	pager = true
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[receive]
+    denyCurrentBranch = ignore
+[core]
+	editor = vim
+	excludesfile = /Users/admj/.gitignore_global
+	#excludesfile = ~/.gitignore_global
+
+[diff]
+        tool = bcomp
+[difftool "bcomp"]
+        cmd = \"/usr/local/bin/bcomp\" \"$LOCAL\" \"$REMOTE\"
+[difftool]
+        prompt = false
+[merge]
+        tool = bcomp
+[mergetool]
+        prompt = false
+[mergetool "bcomp"]
+        cmd = \"/usr/local/bin/bcomp\" \"$LOCAL\" \"$REMOTE\" \"$BASE\" \"$MERGED\"
+
+
+[url "http://wirelesscode.ctripcorp.com"]
+	insteadOf = https://wirelesscode.ctripcorp.com
+[commit]
+	template = ~/.jCommitMsg
+
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
