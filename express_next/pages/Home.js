@@ -4,6 +4,8 @@ import {
 	getTest
 } from '../conf/ApiConf.json';
 
+import styles from '../styles/App.css';
+
 import BaseLink from '../common/BaseLink.js';
 
 import dynamic from 'next/dynamic'
@@ -22,6 +24,7 @@ const Index = (props) => (
       {
         props.shows.map(({ show }) => (
           <li
+            className={title}
             key={show.id}
           >
             <BaseLink

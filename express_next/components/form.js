@@ -12,6 +12,8 @@ export default class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
+
+
     alert('提交的名字: ' + this.state.value);
     event.preventDefault();
   }
