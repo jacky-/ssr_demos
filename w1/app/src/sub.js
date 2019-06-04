@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 
+const sub = () => (<p>sub</p>);
 
-export default class sub extends Component {
-  render() {
-    return(
-      <p>sub</p>
-    );
-  }
-}
+export default sub;
