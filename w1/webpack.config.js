@@ -1,11 +1,14 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlwebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlwebpackPlugin = require('html-webpack-plugin');
+const uglifyjswebpackPlugin = require('uglifyjs-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const myplugin = require('./app/webpackplugin/myplugin.js');
 //定义了一些文件夹的路径
-var ROOT_PATH = path.resolve(__dirname);
-var APP_PATH = path.resolve(ROOT_PATH, 'app');
-var STYLE_PATH = path.resolve(ROOT_PATH, 'app/styles');
-var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
+const ROOT_PATH = path.resolve(__dirname);
+const APP_PATH = path.resolve(ROOT_PATH, 'app');
+const STYLE_PATH = path.resolve(ROOT_PATH, 'app/styles');
+const BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports = {
   //项目的文件夹 可以直接用文件夹名称 默认会找index.js 也可以确定是哪个文件名字
@@ -27,8 +30,12 @@ module.exports = {
     path: BUILD_PATH,
     filename: 'js/bundle-[name]-[hash].js',
     chunkFilename: 'js/[name].chunk.js',
-    publicPath: '/dist/'
+    publicPath: '/' //确保文件资源能够在 http://localhost:3000 下正确访问
   },
+  // 环境
+  mode: "development",
+  // 开发者工具 source-map
+  devtool: 'inline-source-map',
   devServer: {
     historyApiFallback: true,
     hot: true,
@@ -66,9 +73,23 @@ module.exports = {
   },
   //添加我们的插件 会自动生成一个html文件
   plugins: [
+    new ProgressBarPlugin(),
     new HtmlwebpackPlugin({
       title: 'Hello World app'
     }),
+    new uglifyjswebpackPlugin({
+      uglifyOptions: {
+        output: {
+      // 是否注释
+          comments: false
+        },
+        // compress: {
+        //   warnings: false,
+        //   drop_debugger: true,
+        //   drop_console: true
+        // }
+      }
+    }),
+    // new myplugin(),
   ]
-
 };
