@@ -1,21 +1,16 @@
-import sub from './sub';
-import moment from 'moment';
-import styles from '../styles/main.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, browserHistory, Link } from 'react-router-dom'
+import App from './pages/App.js';
+import MainPage from './pages/MainPage.js';
+import OrderDetail from './pages/OrderDetail.js';
+import '_css/base.css'
 
-
-let app = document.createElement('div');
-const myPromise = Promise.resolve(42);
-
-app.innerHTML = '<h1>Hello World it</h1>';
-document.body.appendChild(app);
-console.log(sub());
-
-app.addEventListener('click', (e) => {
-  require.ensure([], function (require) {
-    var di = require('./di');
-    di.default();
-    var element = document.createElement('b');
-    element.innerHTML = `${moment().format('')}`;
-    app.appendChild(element);
-  })
-})
+ReactDOM.render((
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <Route exact path="/" component={MainPage} />
+      <Route exact path="/orderDetail" component={OrderDetail} />
+    </Route>
+  </Router>
+), document.getElementById('app'));
