@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 
+const myplugin = require('./app/webpackplugin/myplugin.js');
 //定义了一些文件夹的路径
 const ROOT_PATH = path.resolve(__dirname);
 const APP_PATH = path.resolve(ROOT_PATH, 'app');
@@ -15,12 +16,21 @@ const STYLE_PATH = path.resolve(ROOT_PATH, 'app/styles');
 const BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports = {
+  //项目的文件夹 可以直接用文件夹名称 默认会找index.js 也可以确定是哪个文件名字
   entry: {
     //第三方库显示声明
+    // moment: ['moment'],
     react: ['react'],
     reactDom: ['react-dom'],
     router: ['react-router-dom'],
-    main: `${APP_PATH}/src/main.js`
+    //公共组件声明为common
+    // common: [`${APP_PATH}/src/sub.js`],
+    main: `${APP_PATH}/src/main.js`,
+    // other: [
+    //   `${APP_PATH}/src/b.js`,
+    //   `${APP_PATH}/src/c.js`
+    // ],
+
   },
   //输出的文件名 合并以后的js会命名为bundle.js
   output: {
