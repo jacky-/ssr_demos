@@ -4,16 +4,12 @@ import {
   TheadRoundCell,
   NumbersCell,
   NameCell,
-  DetailCell
+  DetailCell,
+  GameDetail
 } from '_cp/Cells.js';
 import style from '_css/mainPage.css'
 
 export default class GameResultTable extends PureComponent {
-  constructor(props) {
-    super(props);
-
-  }
-
   renderTableHead = () => (
     <thead>
       <tr>
@@ -39,14 +35,14 @@ export default class GameResultTable extends PureComponent {
             <React.Fragment
               key={index}
             >
-            <DetailCell
-              key={`0${index}`}
-              detailStr={'对手'}
-            />
-            <DetailCell
-              key={`1${index}`}
-              detailStr={'得分'}
-            />
+              <DetailCell
+                key={`0${index}`}
+                detailStr={'对手'}
+              />
+              <DetailCell
+                key={`1${index}`}
+                detailStr={'得分'}
+              />
             </ React.Fragment>
           ))
         }
@@ -56,19 +52,41 @@ export default class GameResultTable extends PureComponent {
 
 
   renderRows = () => {
-    return Object.keys(this.props.nameDict).map((key, index) => (
+    return Object.keys(this.props.nameDict).map((palyerName, index) => (
       <tr
         key={index}
       >
         <NumbersCell
-          numberStr={this.props.nameDict[key]}
+          numberStr={this.props.nameDict[palyerName]}
         />
         <NumbersCell
-          numberStr={key}
+          numberStr={palyerName}
         />
         {
           this.props.ps.map((psEle, idx) => {
-
+            const playerA = psEle[0];
+            const playerB = psEle[1];
+            let opponentCode, score;
+            if (playerA === palyerName) {
+              opponentCode = this.props.nameDict[psEle[1]]
+              score = psEle[2];
+            } else if (playerB === palyerName) {
+              opponentCode = this.props.nameDict[psEle[0]]
+              score = psEle[3];
+            } else {
+              return (
+                <GameDetail
+                  key={idx}
+                />
+              )
+            }
+            return (
+              <GameDetail
+                key={idx}
+                opponentCode={opponentCode}
+                score={score}
+              />
+            );
           })
         }
       </tr>
@@ -78,7 +96,9 @@ export default class GameResultTable extends PureComponent {
 
   render() {
     return (
-      <table>
+      <table
+        className={style.table}
+      >
         {this.renderTableHead()}
         <tbody>
           {this.renderRows()}

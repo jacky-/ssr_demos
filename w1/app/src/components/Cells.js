@@ -34,9 +34,26 @@ export const NameCell = ({ nameStr }) => (
   </td>
 );
 
-export const DetailCell = ({ detailStr }) => (
+export const GameDetail = ({
+  opponentCode = '',
+  score = '',
+} = {}) => (
+  <React.Fragment>
+    <DetailCell
+      detailStr={opponentCode}
+    />
+    <DetailCell
+        style={score > 0 ? {
+          color: 'red'
+        } : null}
+        detailStr={score}
+    />
+  </React.Fragment>
+);
+
+export const DetailCell = ({ detailStr = '', style}) => (
   <td
-    className={style.detailStr}
+    style={style}
   >
     {detailStr}
   </td>

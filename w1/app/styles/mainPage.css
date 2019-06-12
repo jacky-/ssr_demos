@@ -1,0 +1,35 @@
+.pageBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table {
+  text-align: center;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #e5eaff
+}
+
+.table td {
+  border: 1px solid #6394ca;
+  padding: 5px 8px;
+  vertical-align: middle;
+}
+thead .TheadRoundCell {
+  height: 20px;
+  border-bottom-style: dashed;
+}
+thead .NumbersCell {
+  min-width: 3s8px;
+  height: 30px;
+}
+
+.table .NameCell {
+  padding: 0 20px;
+}
+
+.colorRed {
+  color: red
+}
