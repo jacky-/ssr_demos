@@ -1,0 +1,64 @@
+.pageBox {
+  /* padding: 0 .24rem; */
+}
+
+.mainContentbox {
+  /* padding-top: .88rem */
+}
+.headerSearchBox {
+  z-index: 2;
+  position: fixed;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  padding: 0 .24rem;
+  height: .88rem;
+}
+.headerSearchBoxLeft {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: .30rem;
+  height: .56rem;
+  line-height: 1;
+  background-color: #ececed;
+  color: #666
+}
+.headerSearchBoxLeft_span {
+  padding-left: .70rem;
+  font-size: .28rem;
+}
+
+.headerSearchBoxLeft_span::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: .35rem;
+  height: 100%;
+  overflow: hidden;
+  background: url(//pic.c-ctrip.com/platform/h5/home/home-common-sprite2x@v7.15.png) no-repeat;
+  background-size: 21px auto;
+  background-position: 15px 7px;
+  content: "";
+}
+.headerSearchBoxRight {
+  width: 1.02rem;
+  height: .88rem;
+  font-size: .24rem;
+  text-align: center;
+}
+.headerSearchBoxRight span::before {
+  content: "\0020";
+  width: 22px;
+  height: 22px;
+  background: url(//pic.c-ctrip.com/platform/h5/home/home-common-sprite2x@v7.15.png) no-repeat;
+  background-size: 21px auto;
+  background-position: 1px -77px;
+  margin:0 auto 1px;
+  display: block;
+}
