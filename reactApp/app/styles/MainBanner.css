@@ -1,0 +1,13 @@
+.MainBannerBox {
+  overflow: hidden;
+  background-color: red
+}
+.ct {
+  display: flex;
+  justify-content: 'center';
+  align-items: 'center';
+}
+.imgele {
+  width: 7.5rem;
+  height: 3.6rem;
+}
