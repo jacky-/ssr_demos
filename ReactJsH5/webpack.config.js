@@ -20,9 +20,9 @@ module.exports = {
   entry: {
     //第三方库显示声明
     // moment: ['moment'],
-    react: ['react'],
-    reactDom: ['react-dom'],
-    router: ['react-router-dom'],
+    // react: ['react'],
+    // reactDom: ['react-dom'],
+    // router: ['react-router-dom'],
     //公共组件声明为common
     // common: [`${APP_PATH}/src/sub.js`],
     main: `${APP_PATH}/src/main.js`,
@@ -38,6 +38,24 @@ module.exports = {
     filename: 'js/bundle-[name]-[hash].js',
     chunkFilename: 'js/[name].chunk.js',
     publicPath: '/' //确保文件资源能够在 http://localhost:3000 下正确访问
+  },
+
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+        cacheGroups: {
+          vendors: {
+              test: /react/,
+              name: 'vv2'
+          }
+      },
+      minSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
+    }
   },
   // 引用但不打包的文件
   // externals: { react: 'React', 'react-dom': 'ReactDOM' },
