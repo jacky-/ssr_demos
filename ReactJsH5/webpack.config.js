@@ -40,23 +40,23 @@ module.exports = {
     publicPath: '/' //确保文件资源能够在 http://localhost:3000 下正确访问
   },
 
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-        cacheGroups: {
-          vendors: {
-              test: /react/,
-              name: 'vv2'
-          }
-      },
-      minSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 5,
-      maxInitialRequests: 3,
-      automaticNameDelimiter: '~',
-      name: true,
-    }
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all',
+  //       cacheGroups: {
+  //         vendors: {
+  //             test: /react/,
+  //             name: 'vv2'
+  //         }
+  //     },
+  //     minSize: 0,
+  //     minChunks: 1,
+  //     maxAsyncRequests: 5,
+  //     maxInitialRequests: 3,
+  //     automaticNameDelimiter: '~',
+  //     name: true,
+  //   }
+  // },
   // 引用但不打包的文件
   // externals: { react: 'React', 'react-dom': 'ReactDOM' },
   resolve: {

@@ -6,19 +6,13 @@ import style from '_css/mainPage.css'
 
 const MainPage = () => (
   <div
-    onClick={(e) => {
-      console.log('p', e)
-    }}
-
-  className={style.pageBox}>
+    className={style.pageBox}
+  >
     <TitleSearch />
     <div className={style.mainContentbox}>
     <MainBanners />
     <InputBar />
     </div>
-    {/* <MainBanners />
-    <SbuNav />
-    <MainNav /> */}
   </div>
 );
 
