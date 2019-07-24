@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import Rating from '_cp/comment/Rating.js';
+import style from '_css/CommentSubmit.css';
 
 class CommentSubmit extends PureComponent {
   constructor(props) {
@@ -14,9 +15,11 @@ class CommentSubmit extends PureComponent {
   render() {
     return (
       <div>
-        <Rating
-          onRatingChange={this.onRatingChange}
-        />
+        <div className={style.box}>
+            <Rating
+              onRatingChange={this.onRatingChange}
+            />
+          </div>
       </div>
     );
   }
